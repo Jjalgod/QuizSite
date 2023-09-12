@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>My Post</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/css/myPost.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,100&family=Ubuntu&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/def66b134a.js" crossorigin="anonymous">
+    </script>
+    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+</head>
+<body>
+<header id="header">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">KoSK</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/main">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/board/list">Bulletin Board</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Quiz
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/quizMenu">Quiz Menu</a>
+                        <a class="dropdown-item" href="/board/rank">Ranking</a>
+                        <div class="dropdown-divider"></div>
+                    </div>
+                </li>
+            </ul>
+            <th:block th:if="${session.memberVO.name != null }">
+                <a href="/member/userPage" style="text-decoration:none;"><span class="profile_name" th:text="${session.memberVO.name}" style="color:white"></span><span style="color:white">님</span></a>
+            </th:block>
+        </div>
+    </nav>
+</header>
+
+<section class="container">
+    <h1 class="section_header"> <i class="fas fa-solid fa-comment fa-flip-horizontal" style="margin-right:10px;"></i>My Post </h1>
+    <th:block th:if="${totalCount > 0}">
+        <span class="recent_write"> Last Created Date : <span class="recentDate" style="color:red;" th:text="${#temporals.format(recentlyDate, 'yyyy-MM-dd')}"></span> </span>
+        <span class="total_list"> My Post : <span class="total" style="color:red;" th:text="${totalCount}"></span> 건</span>
+    </th:block>
+    <th:block th:if="${totalCount > 0}">
+        <form id="deleteForm" method="post" action="/board/delete">
+            <table class="table table-striped mb-3">
+                <caption class="visually-hidden">게시물 목록</caption>
+                <colgroup>
+                    <col style="width: 50px;">
+                    <col style="width: 80px;">
+                    <col>
+                    <col style="width: 120px;">
+                    <col style="width: 170px;">
+                    <col style="width: 80px;">
+                </colgroup>
+                <thead>
+                <tr class="text-center">
+                    <th>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="checkAll">
+                            <label class="form-check-label visually-hidden" for="checkAll">
+                                전체선택
+                            </label>
+                        </div>
+                    </th>
+                    <th>번호</th>
+                    <th>제목</th>
+                    <th>작성자</th>
+                    <th>작성일</th>
+                    <th>조회수</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="result : ${result}">
+                    <td class="text-center">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" th:id="@{|chk_${result.id}|}" name="del[]" th:value="${result.id}">
+                            <label class="form-check-label visually-hidden" th:for="@{|chk_${result.id}|}">
+                                삭제 체크
+                            </label>
+                        </div>
+                    </td>
+                    <td class="text_number" th:text="${result.id}"></td>
+                    <td><a th:href="@{/board/view(id=${result.id})}" th:text="${result.title}"></a></td>
+                    <td class="text-center" th:text="${result.regId}"></td>
+                    <td class="text-center" th:text="${#temporals.format(result.regDate, 'yyyy-MM-dd')}"></td>
+                    <td class="text-center" th:text="${result.count}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </form>
+        <div class="d-flex justify-content-between mb-3">
+            <button type="button" id="btnDelete" class="btn btn-danger"> Delete </button>
+            <a th:href="@{/board/write}" class="btn btn-outline-dark" id="newPostButton"> New Post </a>
+            <button type="button" class="btn btn-outline-dark" id="mainBoard"> All Post </button>
+        </div>
+        <div class="move_container">
+            <button class="btn btn-outline-dark btn-sm" id="prevButton"> Prev </button>
+            <span class="move_number"></span>
+            <button class="btn btn-outline-dark btn-sm" id="nextButton"> Next </button>
+        </div>
+    </th:block>
+    <th:block th:if="${totalCount <= 0}">
+        <div class="no_post_section">
+            <h1 class="no_post_section_header"> No your Post! </h1>
+            <p class="no_post_section_text">
+                No posts have been registered yet.
+            </p>
+            <div class="row card-section">
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 style="font-weight:bold;"><i class="fas fa-solid fa-pen-nib"></i> Write Your Post!</h3>
+                        </div>
+                        <div class="card-body">
+                            <p class="go_post_text">
+                                If you want to write a new post, click the button below!
+                            </p>
+                            <button class="btn btn-outline-primary btn-lg" id="no_post_button"> New Post </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 style="font-weight:bold;"><i class="fab fa-brands fa-github"></i> Show All Post!</h3>
+                        </div>
+                        <div class="card-body">
+                            <p class="all_post_text">
+                                If you want to see other people's posts, click the button below!
+                            </p>
+                            <button class="btn btn-outline-primary btn-lg" id="all_post_button"> All Post </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </th:block>
+</section>
+
+<footer id="footer">
+    <div class="gototop">
+        <a href="#" class="lnk_top">
+            <span>TOP</span>
+        </a>
+    </div>
+    <div class="name1">OhKyuChan | okc0202@naver.com</div>
+    <div class="name2">KimSeungRyong | douglas@naver.com</div>
+    <div class="copyright">@ Quiz Program.</div>
+</footer>
+</body>
+<script>
+    $(function(){
+       $('#btnDelete').click(function(){
+           $('#deleteForm').submit();
+           });
+       });
+</script>
+<script>
+    $(document).ready(function () {
+        // 전체선택 체크박스 클릭 시
+        $("#checkAll").click(function () {
+            $("input[name='del[]']").prop('checked', this.checked);
+        });
+
+        // 개별 체크박스 클릭 시
+        $("input[name='del[]']").click(function () {
+            if ($("input[name='del[]']:checked").length === $("input[name='del[]']").length) {
+                $("#checkAll").prop('checked', true);
+            } else {
+                $("#checkAll").prop('checked', false);
+            }
+        });
+    });
+</script>
+<script th:inline="javascript">
+    var list = [[ ${ result } ]];
+    var currentPage = [[ ${ currentPage }]];
+    var totalPage = [[ ${ totalPage } ]];
+
+    var list_number = document.querySelectorAll(".text_number");
+
+    for(var i=0;i<list.length;i++){
+        list_number[list.length-1-i].innerHTML = (currentPage-1)*10 + i+1;
+    }
+
+    for(var i=0;i<totalPage;i++){
+        $(".move_number").append('<a class="number" data-value='+(i+1)+' href="/board/myPost?start='+(i+1)+'">'+(i+1)+'</a>');
+    }
+    var pageList = document.querySelectorAll(".number");
+
+    for(var i=0;i<pageList.length;i++){
+        if (currentPage.toString() === pageList[i].dataset.value){
+            pageList[i].style.color = "blue";
+            pageList[i].style.textDecoration = "underline";
+        }
+    }
+
+</script>
+<script>
+    var mainBoard = document.querySelector("#mainBoard");
+    mainBoard.addEventListener("click",function(evt){
+       location.href = "/board/list";
+    });
+</script>
+<script>
+    var prevButton = document.querySelector("#prevButton");
+    var nextButton = document.querySelector("#nextButton");
+
+    var totalPage = [[ ${ totalPage } ]];
+    var currentPage = [[ ${ currentPage }]];
+
+    prevButton.addEventListener("click",function(evt){
+        if (currentPage != 1){
+            location.href = "/board/myPost?start="+parseInt(currentPage-1);
+        }
+    });
+
+    nextButton.addEventListener("click",function(evt){
+        if (currentPage != totalPage){
+            location.href = "/board/myPost?start="+parseInt(currentPage+1);
+        }
+    });
+</script>
+<script>
+    var no_post_button = document.querySelector("#no_post_button");
+
+    no_post_button.addEventListener("click",function(evt){
+       location.href = "/board/write";
+    });
+
+    var all_post_button = document.querySelector("#all_post_button");
+
+    all_post_button.addEventListener("click",function(evt){
+        location.href = "/board/list";
+    });
+</script>
+</html>

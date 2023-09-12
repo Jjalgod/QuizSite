@@ -1,0 +1,130 @@
+body{
+    background-color:#e9ecef;
+}
+label{
+    font-size:1.4rem;
+    font-weight:bold;
+}
+select{
+    width:258px;
+    height:30px;
+}
+.section_list{
+    list-style:none;
+    padding:0;
+    margin-top:20px;
+}
+
+.note_img{
+    width:80%;
+    transform:rotate(30deg);
+    margin-left:110px;
+    margin-top:50px;
+}
+
+.section_text{
+    padding:7% 12% 0;
+}
+.section_text h1{
+    font-family: 'Montserrat-Black', sans-serif;
+    font-weight:bold;
+    font-size:2.5em;
+}
+.section p {
+    margin-top:20px;
+    font-size:20px;
+}
+.section_icon{
+    color:#0081ff;
+    font-weight:bold;
+    font-size:20px;
+}
+.row_section{
+    z-index=1;
+    padding:5% 12%;
+    background-color:#b1d3e5;
+    position:relative;
+    bottom:50px;
+}
+.problemType{
+    margin-top:20px;
+}
+.countProblem{
+    margin-top:30px;
+    font-size:13px;
+}
+#countProblem{
+    width:258px;
+    height:30px;
+}
+.submitButton{
+    margin-top:30px;
+    height:50px;
+}
+
+.card{
+    height:450px;
+}
+.card-header{
+    text-align:center;
+}
+.card-body h2{
+    margin-bottom:20px;
+    text-align:center;
+}
+.card-body p{
+    font-size:20px;
+    margin:10px 0 0 0;
+    font-weight:bold;
+}
+.card-body span{
+    color:gray;
+    font-size:15px;
+}
+.card-body .description{
+    font-size:14px;
+    color:gray;
+}
+.gototop
+{
+    z-index:1200;
+    position:relative;
+    background-color:#e9ecef;
+    text-align:center;
+    margin-top:10px;
+}
+.lnk_top
+{
+    padding:18px 0px 19.5px;
+    font-size:15px;
+    color:#000;
+}
+#footer
+{
+    margin-top:40px;
+    z-index:1200;
+    position:relative;
+    background-color:#e9ecef;
+    word-wrap:break-word;
+    text-align:center;
+    clear:both;
+    margin:0 auto;
+}
+.name1
+{
+    margin-top:10px;
+    font-size:15px;
+    color:#999;
+}
+.name2
+{
+    font-size:15px;
+    color:#999;
+}
+.copyright
+{
+    padding-right:10px;
+    padding-bottom:15px;
+    font-size:13px;
+    color:#999;
+}

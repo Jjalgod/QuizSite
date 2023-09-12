@@ -1,0 +1,104 @@
+html
+{
+    background-color:#3d3d40;
+    text-align:center;
+    overflow:hidden;
+}
+.img_container{
+    margin-top:50px;
+}
+.intro_image{
+    width:200px;
+    height:200px;
+    margin-bottom:20px;
+}
+.welcome_txt{
+    font-size:20px;
+    margin-bottom:10px;
+    color:white;
+}
+.login_txt{
+    color:white;
+}
+button {
+  background: #37db70;
+  background-image: -webkit-linear-gradient(top, #37db70, #37db70);
+  background-image: -moz-linear-gradient(top, #37db70, #37db70);
+  background-image: -ms-linear-gradient(top, #37db70, #37db70);
+  background-image: -o-linear-gradient(top, #37db70, #37db70);
+  background-image: linear-gradient(to bottom, #37db70, #37db70);
+  -webkit-border-radius: 12;
+  -moz-border-radius: 12;
+  border-radius: 12px;
+  font-family: Georgia;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  border-style:none;
+}
+
+button:hover {
+  background: #154f27;
+  background-image: -webkit-linear-gradient(top, #154f27, #154f27);
+  background-image: -moz-linear-gradient(top, #154f27, #154f27);
+  background-image: -ms-linear-gradient(top, #154f27, #154f27);
+  background-image: -o-linear-gradient(top, #154f27, #154f27);
+  background-image: linear-gradient(to bottom, #154f27, #154f27);
+  text-decoration: none;
+}
+.button_container{
+    margin-top:30px;
+}
+.signIn{
+    margin-right:10px;
+}
+.signUp{
+    margin-left:10px;
+}
+.gototop
+{
+    z-index:1200;
+    position:relative;
+    background-color:#3d3d40;
+    text-align:center;
+    margin-top:10px;
+    color:white;
+}
+.lnk_top
+{
+    padding:18px 0px 19.5px;
+    font-size:15px;
+    color:white;
+}
+#footer
+{
+    margin-top:40px;
+    z-index:1200;
+    position:relative;
+    background-color:#3d3d40;
+    word-wrap:break-word;
+    text-align:center;
+    clear:both;
+    height:140px;
+    vertical-align:bottom;
+    padding-top:50px;
+}
+.name1
+{
+    margin-top:10px;
+    font-size:15px;
+    color:white;
+}
+.name2
+{
+    font-size:15px;
+    color:white;
+}
+.copyright
+{
+    padding-right:10px;
+    padding-bottom:15px;
+    font-size:13px;
+    color:white;
+}

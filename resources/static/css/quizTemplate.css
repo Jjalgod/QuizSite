@@ -1,0 +1,247 @@
+body{
+    background-color:#e9ecef;
+    max-height:900px;
+}
+*, *:before, *:after {
+	 box-sizing: border-box;
+}
+a{
+    text-decoration:none;
+}
+
+.section_header{
+    margin-top:70px;
+    padding:3% 12%;
+    text-align:center;
+}
+.section-header-text{
+    display:inline-block;
+    margin-left:20px;
+    font-weight:bold;
+
+}
+.score_img{
+    width:300px;
+    transform:rotate(30deg);
+}
+
+.quiz_section{
+    padding:3% 12%;
+    position:relative;
+    z-index:1;
+    bottom:100px;
+}
+.large {
+     font-size: 3rem;
+}
+.title{
+    padding:5% 0;
+    font-size:2rem;
+    color:#0081ff;
+    font-weight:bold;
+}
+.back_text{
+    font-size:16px;
+    text-align:left;
+    padding:2% 5%;
+    margin-bottom:0;
+}
+.back_button{
+    margin-right:70px;
+}
+ .card.animation {
+	 color: inherit;
+	 cursor: pointer;
+	 min-width: calc(33% - 3rem);
+	 height: 400px;
+	 min-height: 400px;
+	 perspective: 1000px;
+	 position: relative;
+}
+ @media screen and (max-width: 800px) {
+	 .card {
+		 width: calc(50% - 3rem);
+	}
+}
+ @media screen and (max-width: 500px) {
+	 .card {
+		 width: 100%;
+	}
+}
+.card{
+    height:400px;
+    margin:0 20px;
+}
+.card-header{
+    text-align:center;
+}
+.card-body h3 {
+    text-align:center;
+}
+.front .front_section{
+    text-align:left;
+}
+.front_section p {
+    margin-top:30px;
+    margin-bottom:0px;
+    font-weight:bold;
+}
+.front_section div{
+    font-size:18px;
+    font-weight:normal;
+}
+.answerText{
+    margin-top:20px;
+    font-weight:bold;
+}
+.answerButton{
+    margin-top:30px;
+}
+.current_score{
+   font-size: 20px;
+   float:right;
+}
+.number_text{
+    text-align:left !important;
+    color:#0081ff;
+}
+.quizText{
+    margin-top:10px;
+    margin-bottom:0px;
+}
+#answer{
+    width:100%;
+}
+.front, .back {
+	 display: block;
+	 border-radius: 6px;
+	 background-position: center;
+	 background-size: cover;
+	 text-align: center;
+	 justify-content: center;
+	 align-items: center;
+	 position: absolute;
+	 height: 400px;
+	 width: 100%;
+	 -webkit-backface-visibility: hidden;
+	 backface-visibility: hidden;
+	 transform-style: preserve-3d;
+	 transition: ease-in-out 600ms;
+}
+ .front {
+	 background-size: cover;
+	 padding: 20px;
+	 font-size: 1.618rem;
+	 font-weight: 600;
+	 color: #fff;
+	 overflow: hidden;
+	 font-family: Poppins, sans-serif;
+}
+ .front:before {
+	 position: absolute;
+	 display: block;
+	 content: '';
+	 top: 0;
+	 left: 0;
+	 right: 0;
+	 bottom: 0;
+	 background: linear-gradient(135deg, #1a9be6, #1a57e6);
+	 opacity: 0.25;
+	 z-index: -1;
+}
+.card:hover .front {
+	 transform: rotateY(180deg);
+}
+.card:nth-child(even):hover .front {
+	 transform: rotateY(-180deg);
+}
+.back {
+	 background: #fff;
+	 transform: rotateY(-180deg);
+	 padding: 0 2em;
+}
+.card:hover .back {
+	 transform: rotateY(0deg);
+}
+.card:nth-child(even) .back {
+	 transform: rotateY(180deg);
+}
+.card:nth-child(even):hover .back {
+	 transform: rotateY(0deg);
+}
+.button {
+	 transform: translateZ(40px);
+	 cursor: pointer;
+	 -webkit-backface-visibility: hidden;
+	 backface-visibility: hidden;
+	 font-weight: bold;
+	 color: #fff;
+	 padding: 0.5em 1em;
+	 border-radius: 100px;
+	 font: inherit;
+	 background: linear-gradient(135deg, #1a9be6, #1a57e6);
+	 border: none;
+	 position: relative;
+	 transform-style: preserve-3d;
+	 transition: 300ms ease;
+}
+.button:before {
+	 transition: 300ms ease;
+	 position: absolute;
+	 display: block;
+	 content: '';
+	 transform: translateZ(-40px);
+	 -webkit-backface-visibility: hidden;
+	 backface-visibility: hidden;
+	 height: calc(100% - 20px);
+	 width: calc(100% - 20px);
+	 border-radius: 100px;
+	 left: 10px;
+	 top: 16px;
+	 box-shadow: 0 0 10px 10px rgba(26, 87, 230, 0.25);
+	 background-color: rgba(26, 87, 230, 0.25);
+}
+
+.gototop
+{
+    z-index:1200;
+    position:relative;
+    background-color:#e9ecef;
+    text-align:center;
+    margin-top:10px;
+}
+.lnk_top
+{
+    padding:18px 0px 19.5px;
+    font-size:15px;
+    color:#000;
+}
+#footer
+{
+    z-index:1200;
+    position:relative;
+    background-color:#e9ecef;
+    word-wrap:break-word;
+    text-align:center;
+    clear:both;
+    margin:0 auto;
+    bottom:200px;
+}
+.name1
+{
+    margin-top:10px;
+    font-size:15px;
+    color:#999;
+}
+.name2
+{
+    font-size:15px;
+    color:#999;
+}
+.copyright
+{
+    padding-right:10px;
+    padding-bottom:15px;
+    font-size:13px;
+    color:#999;
+}

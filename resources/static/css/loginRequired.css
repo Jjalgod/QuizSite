@@ -1,0 +1,27 @@
+body{
+    background-color:#3d3d40 !important;
+}
+#section{
+    padding:5% 15%;
+}
+.section-header{
+    text-align:center;
+    padding:3% 0;
+    font-weight: 800;
+    font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+    color:red;
+    margin-bottom:30px;
+}
+.text_container{
+    padding: 6% 6%;
+}
+.warning_text{
+    font-weight:bold;
+    font-size:17px;
+}
+.card{
+    height:300px;
+}
+.card-header{
+    text-align:center;
+}

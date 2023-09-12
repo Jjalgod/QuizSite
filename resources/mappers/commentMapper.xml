@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.koskQuizProgram.mapper.CommentMapper">
+
+    <!--댓글 추가-->
+    <insert id="insertCommentVO" parameterType="CommentVO" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO comment (
+        board_id,
+        comment,
+        reg_id,
+        reg_date
+        ) VALUES (
+        #{boardId},
+        #{comment},
+        #{regId},
+        NOW()
+        )
+    </insert>
+
+    <!--댓글 보기-->
+    <select id="selectCommentVOById" resultType="CommentVO">
+        SELECT
+        comment,
+        reg_id,
+        reg_date
+        FROM comment
+        WHERE board_id = #{boardId}
+        ORDER BY id DESC
+    </select>
+</mapper>

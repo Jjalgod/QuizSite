@@ -1,0 +1,145 @@
+html
+{
+    background-color:#d4dadf;
+}
+body
+{
+    max-width:450px;
+    margin:0 auto !important;
+    background-color:#e9ecef;
+}
+a
+{
+    text-decoration:none;
+    cursor:pointer;
+}
+.view_container
+{
+    min-height:380px;
+}
+.login_header
+{
+    padding:0;
+    padding-bottom:10px;
+    text-align:left;
+    margin:0;
+    background-color:#77767c;
+}
+.gomain
+{
+    font-size:20px;
+    color:#000;
+}
+.login
+{
+    padding:20px 18px 20px;
+    background-color: #e9ecef;
+}
+form
+{
+    margin:0;
+    padding:0;
+    margin-left:18px;
+}
+.login_header_sub.border_bottom
+{
+    margin-top:20px;
+    padding-bottom:7.5px;
+    margin-bottom:3px;
+    text-align:center;
+}
+.header_title
+{
+    font-size:30px;
+    color:#000;
+    font-weight:bold;
+}
+.login_form
+{
+    padding-top:3.5px;
+    margin-bottom:15px;
+}
+.label_form, .label_form2, .label_form3, .label_form4
+{
+    display:block;
+    padding:3.5px 3px 3px;
+    font-size:16px;
+    color:#666;
+    margin-bottom:5px;
+    margin-top:10px;
+    font-weight:bold;
+}
+.email_input, .password_input, .id_input, .name_input
+{
+    display:block;
+    height:50px;
+    padding:0 15px;
+    border:1px solid #dadada;
+    background-color:#fff;
+    font-size:16px;
+    line-height:normal;
+    color:#000;
+    box-sizing:border-box;
+    width:378px;
+}
+.id_check
+{
+    color:#000;
+    text-align:center;
+    font-size:15px;
+    width:120px;
+    padding:5px 0;
+    margin-top:5px;
+}
+.signIn_btn
+{
+    text-align:center;
+    box-sizing:border-box;
+    width:380px;
+    margin-left:15px;
+    padding:12px 0;
+    margin-top:10px;
+}
+.gototop
+{
+    z-index:1200;
+    position:relative;
+    background-color:#e9ecef;
+    text-align:center;
+    margin-top:10px;
+}
+.lnk_top
+{
+    padding:18px 0px 19.5px;
+    font-size:15px;
+    color:#000;
+}
+#footer
+{
+    margin-top:40px;
+    z-index:1200;
+    position:relative;
+    background-color:#e9ecef;
+    word-wrap:break-word;
+    text-align:center;
+    clear:both;
+    height:140px;
+}
+.name1
+{
+    margin-top:10px;
+    font-size:15px;
+    color:#999;
+}
+.name2
+{
+    font-size:15px;
+    color:#999;
+}
+.copyright
+{
+    padding-right:10px;
+    padding-bottom:15px;
+    font-size:13px;
+    color:#999;
+}

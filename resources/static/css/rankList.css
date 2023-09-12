@@ -1,0 +1,108 @@
+body{
+    background-color:#e9ecef;
+}
+.ranking_header{
+    margin: 30px 0 30px 145px;
+    color:#ffc107;
+}
+a{
+    color:#fff;
+}
+.section_list{
+    list-style:none;
+    padding:0;
+}
+.note_img{
+    width:100%;
+    margin-left:20px;
+}
+
+.section_text{
+    padding:7% 15% 0;
+}
+.section_text h1{
+    font-family: 'Montserrat-Black', sans-serif;
+    font-weight:bold;
+    font-size:2.5em;
+    color:#0081ff;
+}
+.section p {
+    margin-top:20px;
+    font-size:20px;
+    margin-bottom:0px;
+}
+.section_icon{
+    color:#999;
+    font-weight:bold;
+    font-size:13px;
+}
+.section.text.challenge{
+    margin-bottom:10px;
+    font-weight:bold;
+}
+
+.ranking_section{
+    background-color:#6c757d;
+    padding:0;
+    width:1264px !important;
+    position:relative;
+    right:15px;
+    height:450px;
+}
+.table {
+    width:800px;
+    margin:0 auto;
+}
+th{
+    color:#ffc107;
+}
+td {
+    color:#fff;
+    width:100px;
+}
+.carousel-indicators{
+    height: 340px;
+}
+.gototop
+{
+    z-index:1200;
+    position:relative;
+    background-color:#e9ecef;
+    text-align:center;
+    margin-top:40px;
+}
+.lnk_top
+{
+    padding:18px 0px 19.5px;
+    font-size:15px;
+    color:#000;
+}
+#footer
+{
+    margin-top:40px;
+    z-index:1200;
+    position:relative;
+    background-color:#e9ecef;
+    word-wrap:break-word;
+    text-align:center;
+    clear:both;
+    margin:0 auto;
+}
+.name1
+{
+    margin-top:10px;
+    font-size:15px;
+    color:#999;
+}
+.name2
+{
+    font-size:15px;
+    color:#999;
+}
+.copyright
+{
+    padding-right:10px;
+    padding-bottom:15px;
+    font-size:13px;
+    color:#999;
+}

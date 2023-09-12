@@ -1,0 +1,90 @@
+html
+{
+    background-color:#d4dadf;
+}
+body
+{
+    max-width:450px;
+    margin:0 auto !important;
+    background-color:#e9ecef;
+
+}
+#section{
+    font-weight:bold;
+}
+.section_header{
+    text-align: center;
+    margin: 30px;
+}
+label{
+    display:block;
+    padding:3.5px 3px 3px;
+    font-size:16px;
+    color:#666;
+    margin-bottom:5px;
+    margin-top:10px;
+    margin-left:40px;
+}
+input{
+    display:block;
+    height:50px;
+    padding:0 15px;
+    border:1px solid gray;
+    background-color:#fff;
+    font-size:16px;
+    line-height:normal;
+    color:#000;
+    box-sizing:border-box;
+    width:378px;
+    margin:0 auto;
+}
+.pass_check{
+    margin:10px 0 0 35px;
+}
+#submitButton{
+    width:378px;
+    margin:30px 0 0 35px;
+}
+.gototop
+{
+    z-index:1200;
+    position:relative;
+    background-color:#e9ecef;
+    text-align:center;
+    margin-top:10px;
+}
+.lnk_top
+{
+    padding:18px 0px 19.5px;
+    font-size:15px;
+    color:#000;
+}
+#footer
+{
+    margin-top:40px;
+    z-index:1200;
+    position:relative;
+    background-color:#e9ecef;
+    word-wrap:break-word;
+    text-align:center;
+    clear:both;
+    height:140px;
+}
+.name1
+{
+    margin-top:10px;
+    font-size:15px;
+    color:#999;
+}
+.name2
+{
+    font-size:15px;
+    color:#999;
+}
+.copyright
+{
+    padding-right:10px;
+    padding-bottom:15px;
+    font-size:13px;
+    color:#999;
+}

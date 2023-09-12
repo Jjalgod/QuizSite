@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.koskQuizProgram.mapper.MemberMapper">
+
+    <!-- 회원정보 가져오기 -->
+    <select id="getRankList" resultType="MemberVO">
+        SELECT
+        name,
+        id,
+        email,
+        score,
+        description
+        FROM member
+        ORDER BY score DESC;
+    </select>
+    <!-- 아이디 중복체크 -->
+    <select id="duplicateId" parameterType="String" resultType="boolean">
+        SELECT IF(COUNT(*) <![CDATA[ >= ]]> 1, 1, 0)
+        FROM member
+        WHERE id = #{id}
+    </select>
+
+    <!-- 이메일 중복체크 -->
+    <select id="duplicateEmail" parameterType="String" resultType="boolean">
+        SELECT IF(COUNT(*) <![CDATA[ >= ]]> 1, 1, 0)
+        FROM member
+        WHERE email = #{email}
+    </select>
+
+    <!-- 회원 정보 저장 -->
+    <select id="insertMember" parameterType="MemberVO">
+        INSERT INTO member (
+        name,
+        id,
+        password,
+        email,
+        score
+        ) VALUES (
+        #{name},
+        #{id},
+        #{password},
+        #{email},
+        0
+        )
+    </select>
+
+    <!-- 로그인 처리 -->
+    <select id="loginProcess" parameterType="MemberVO" resultType="MemberVO">
+        SELECT
+        name,
+        id,
+        password,
+        email,
+        score,
+        description
+        FROM member
+        WHERE id = #{id}
+        <!--        AND password = SHA2(#{password}, 256)-->
+        AND password = #{password}
+    </select>
+
+    <!-- 아이디 찾기-->
+    <select id="findUserId" parameterType="MemberVO" resultType="String">
+        SELECT id
+        FROM member
+        WHERE name = #{name}
+        AND email = #{email}
+    </select>
+
+    <!-- 비밀번호 찾기 -->
+    <select id="findPassword" parameterType="MemberVO" resultType="String">
+        SELECT password
+        FROM member
+        WHERE id = #{id}
+    </select>
+
+    <!-- 비밀번호 변경 -->
+    <update id="updatePassword" parameterType="MemberVO">
+        UPDATE member SET
+        password = #{password}
+        WHERE id = #{id}
+    </update>
+
+    <!--아이디 수정 -->
+    <update id="updateID" parameterType="MemberVO">
+        UPDATE member SET
+        id = #{id}
+        WHERE name = #{name}
+        AND email = #{email}
+    </update>
+
+    <!-- 하이스코어 찾기 -->
+    <select id="findHighScore" parameterType="MemberVO" resultType="int">
+        SELECT score
+        FROM member
+        WHERE id = #{id}
+    </select>
+
+    <!-- 하이스코어 갱신 -->
+    <update id="updateHighScore" parameterType="MemberVO">
+        UPDATE member SET
+        score = #{score}
+        WHERE id = #{id}
+        AND name = #{name}
+        AND email = #{email}
+    </update>
+
+    <!--회원탈퇴-->
+    <delete id="deleteUserInfo" parameterType="MemberVO">
+        DELETE FROM member
+        WHERE id = #{id}
+    </delete>
+
+    <!--회원정보 수정-->
+    <update id="updateUserInfo" parameterType="MemberVO">
+        UPDATE member SET
+        name = #{name},
+        email = #{email},
+        description = #{description}
+        WHERE id = #{id}
+    </update>
+
+    <!--한줄 소개 업데이트-->
+    <update id="updateUserDescription" parameterType="MemberVO">
+        UPDATE member SET
+        description = #{description}
+        WHERE id = #{id}
+    </update>
+</mapper>

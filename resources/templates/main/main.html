@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Index</title>
+  <link rel="stylesheet" href="css/main.css">
+  <script src="https://kit.fontawesome.com/def66b134a.js" crossorigin="anonymous">
+  </script>
+</head>
+<body>
+<div class="img_container">
+  <img src="images/quiz.png" alt="intro_image" class="intro_image">
+</div>
+<div class="text_container">
+  <div class="welcome_txt">
+    Welcome to Quiz Program!
+  </div>
+  <div class="login_txt">
+    Login with your QuizProgram account to continue
+  </div>
+</div>
+<div class="button_container">
+  <button class="signIn" th:if="${session.isEmpty() || session.memberVO == null }" >Sign in</button>
+  <button class="signUp" th:if="${session.isEmpty() || session.memberVO == null }" >Sign up</button>
+  <button class="quizStart" th:if="${!session.isEmpty() && session.memberVO != null }" th:onclick="'window.location.href = \'/quizMenu\' '">quizStart</button>
+  <button class="logout" th:if="${!session.isEmpty() && session.memberVO != null }" th:onclick="'window.location.href = \'/member/logout\' '">log out</button>
+</div>
+<footer id="footer">
+  <div class="gototop">
+    <a href="#" class="lnk_top">
+      <span>TOP</span>
+    </a>
+  </div>
+  <div class="name1">OhKyuChan | okc0202@naver.com</div>
+  <div class="name2">KimSeungRyong | douglas@naver.com</div>
+  <div class="copyright">@ Quiz Program.</div>
+</footer>
+
+</body>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+    var signInButton = document.querySelector(".signIn");
+
+    signInButton.addEventListener("click",function(evt){
+        location.href = "member/login";
+    });
+
+    var signUpButton = document.querySelector(".signUp");
+
+    signUpButton.addEventListener("click",function(evt){
+        location.href = "member/join";
+    });
+</script>
+
+</html>

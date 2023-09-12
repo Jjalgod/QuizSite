@@ -1,0 +1,176 @@
+body{
+    background-color:#e9ecef;
+}
+.section_header_container card {
+    height:450px;
+}
+.section_header{
+    margin-top:30px;
+    padding:3% 15%;
+}
+.section_header_text{
+    margin-top:30px;
+    font-weight:bold;
+}
+.header_ranking{
+    margin-top:40px;
+    font-weight:bold;
+}
+.score{
+    text-align:center;
+    font-weight:bold;
+    font-size:20px;
+    margin-bottom:20px;
+}
+.summary_quiz{
+    font-weight:bold;
+    font-size:20px;
+    text-align:center;
+}
+.final_score{
+    color:red;
+}
+.section_result{
+    padding:3% 12%;
+    margin-top:30px;
+    margin-bottom:40px;
+    background-color:#b1d3e5;
+}
+.result_header{
+    text-align:center;
+    margin-bottom:40px;
+    color:white;
+    font-weight:bold;
+}
+.correct_section h1 {
+    font-weight:bold;
+    text-align:center;
+    color:#1ab354;
+}
+.wrong_section h1{
+    font-weight:bold;
+    text-align:center;
+    color:#ff4908;
+}
+.answer_main{
+   font-weight:bold;
+   color:white;
+   font-size:30px;
+   text-align:center;
+}
+.problem_number{
+    padding-top:3%;
+    margin-top:10px;
+    font-weight:bold;
+    font-size:25px;
+    text-align:left;
+    margin-left:80px;
+    margin-bottom:0;
+    width:300px !important;
+}
+.category{
+    padding-top:3%;
+    text-align:left;
+    font-weight:bold;
+    font-size:25px;
+    margin-left:80px;
+    margin-bottom:0;
+}
+.problem_category{
+    font-weight:bold;
+    width:300px !important;
+    text-align:left;
+    margin-left:80px;
+    margin-bottom:0;
+    font-size:20px;
+}
+.question{
+    padding-top:3%;
+    text-align:left;
+    font-weight:bold;
+    font-size:25px;
+    margin-left:80px;
+    margin-bottom:0;
+}
+.problem_text{
+    font-weight:bold;
+    width:300px !important;
+    text-align:left;
+    margin-left:80px;
+    margin-bottom:0;
+    word-break:break-all;
+}
+.answer{
+    padding-top:3%;
+    text-align:left;
+    font-weight:bold;
+    font-size:25px;
+    margin-left:80px;
+    margin-bottom:0;
+}
+.problem_answer{
+    font-weight:bold;
+    width:300px !important;
+    text-align:left;
+    margin-left:80px;
+    margin-bottom:0;
+    font-size:23px;
+}
+.card{
+    height:400px;
+}
+.card-header{
+    text-align:center;
+}
+.card-text p{
+    font-size:17px;
+}
+.carousel-indicators{
+    margin-top:20px;
+}
+.carousel-item{
+    text-align:center;
+}
+.gototop
+{
+    z-index:1200;
+    position:relative;
+    background-color:#e9ecef;
+    text-align:center;
+    margin-top:10px;
+}
+.lnk_top
+{
+    padding:18px 0px 19.5px;
+    font-size:15px;
+    color:#000;
+}
+#footer
+{
+    margin-top:40px;
+    z-index:1200;
+    position:relative;
+    background-color:#e9ecef;
+    word-wrap:break-word;
+    text-align:center;
+    clear:both;
+    margin:0 auto;
+}
+.name1
+{
+    margin-top:10px;
+    font-size:15px;
+    color:#999;
+}
+.name2
+{
+    font-size:15px;
+    color:#999;
+}
+.copyright
+{
+    padding-right:10px;
+    padding-bottom:15px;
+    font-size:13px;
+    color:#999;
+}

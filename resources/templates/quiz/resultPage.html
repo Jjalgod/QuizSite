@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz Result</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="/css/resultPage.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,100&family=Ubuntu&display=swap" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/def66b134a.js" crossorigin="anonymous">
+  </script>
+</head>
+<body>
+<header id="header">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">KoSK</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/main">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/board/list">Bulletin Board</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Quiz
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/quizMenu">Quiz Menu</a>
+            <a class="dropdown-item" href="/board/rank">Ranking</a>
+            <div class="dropdown-divider"></div>
+          </div>
+        </li>
+      </ul>
+      <th:block th:if="${session.memberVO.name != null }">
+        <a href="/member/userPage"><span class="profile_name" th:text="${session.memberVO.name}" style="color:white"></span><span style="color:white">님</span></a>
+      </th:block>
+    </div>
+  </nav>
+</header>
+<section id="section">
+
+  <div class="section_header">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-header">
+            <h1 class="section_header_h1"><i class="fas fa-duotone fa-gift" style="margin-right:10px;"></i>Congratulations!</h1>
+          </div>
+          <div class="card-body">
+            <div class="card-text">
+              <p class="section_header_text">
+                Thank you for taking the quiz. <br> You will get a better score next time!
+              </p>
+              <div class="header_ranking">
+                <p> Do you want to see someone else's ranking? <br>
+                  Press the button below to check
+                </p>
+                <button type="button" class="btn btn-outline-warning btn-lg"><i class="fas fa-solid fa-crown" style="margin-right:10px;"></i>Ranking</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-header">
+            <h1><i class="fas fa-solid fa-book" style="margin-right:5px;"></i> Summary </h1>
+          </div>
+          <div class="card-body">
+            <div class="card-text">
+              <div class="score">
+                <span style="font-size:25px;"> Score : <span th:text="${correctIndex}"></span>/<span th:text="${session.problemCount}"></span></span> <br>
+                <span> Correct Ratio : <span class="correct_ratio">50%</span> </span> <br>
+                <span class="final_score" style="font-size:25px;"> <i class="fas fa-solid fa-coins" style="margin-right:5px;"></i>Final Score : <span th:text="${score}"></span></span>
+              </div>
+              <div class="summary_quiz">
+                <p>Category <i class="fas fa-solid fa-arrow-right" style="margin:0 10px;"></i> Random Module </p>
+                <p>Type <i class="fas fa-solid fa-arrow-right" style="margin:0 10px;"></i> <span th:text="${session.difficulty}"></span> </p>
+                <p>Difficulty <i class="fas fa-solid fa-arrow-right" style="margin:0 10px;"></i> <span th:text="${session.problemType}"></span> </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section_result">
+    <h1 class="result_header"><i class="fas fa-solid fa-check" style="margin-right:10px;"></i> Check your answer! </h1>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-6 correct_section">
+          <h1> <i class="fas fa-solid fa-thumbs-up" style="margin-right:5px;"></i> Correct! </h1>
+          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active answer_main">
+                <span> <i class="fas fa-solid fa-paperclip" style="margin-right:5px;"></i>Correct section! </span>
+              </div>
+                <th:block th:each="item : ${correctQuizItem}">
+                  <th:block if = "${correctQuizItem.size() > 0}">
+                    <div class="carousel-item">
+                      <p class="problem_number"> No.<span th:text="${item.key+1}"></span> </p>
+                      <p class="category">Category</p>
+                      <p class="problem_category"><span th:text="${item.value.category}"></span></p>
+                      <p class="question">Question</p>
+                      <div class="problem_text" id="correct_problem_text"> <span th:text="${item.value.question}"></span></div>
+                      <p class="answer">Correct Answer</p>
+                      <p class="problem_answer"><span th:text="${item.value.correct_answer}"></span></p>
+                    </div>
+                  </th:block>
+                </th:block>
+              </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+          <!-- currentIndex 출력 -->
+          <!--      <p>Current Index: <span th:text="${index}"></span></p>-->
+        </div>
+        <div class="col-lg-6 wrong_section">
+          <h1> <i class="fas fa-solid fa-bomb" style="margin-right:5px;"></i> Wrong! </h1>
+          <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active answer_main">
+                  <span>  <i class="fas fa-solid fa-paperclip" style="margin-right:5px;"></i> Wrong section! </span>
+              </div>
+                <th:block th:each="item2 : ${wrongQuizItem}">
+                  <th:block if = "${wrongQuizItem.size() > 0}">
+                    <div class="carousel-item">
+                      <p class="problem_number"> No.<span th:text="${item2.key+1}"></span> </p>
+                      <p class="category">Category</p>
+                      <p class="problem_category"><span th:text="${item2.value.category}"></span></p>
+                      <p class="question">Question</p>
+                      <div class="problem_text" id="wrong_problem_text"> <span th:text="${item2.value.question}"></span></div>
+                      <p class="answer">Correct Answer</p>
+                      <p class="problem_answer"><span th:text="${item2.value.correct_answer}"></span></p>
+                    </div>
+                  </th:block>
+                </th:block>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators2" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators2" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<footer id="footer">
+  <div class="gototop">
+    <a href="#" class="lnk_top">
+      <span>TOP</span>
+    </a>
+  </div>
+  <div class="name1">OhKyuChan | okc0202@naver.com</div>
+  <div class="name2">KimSeungRyong | douglas@naver.com</div>
+  <div class="copyright">@ Quiz Program.</div>
+</footer>
+</body>
+
+<script>
+  var ranking_button = document.querySelector(".header_ranking button");
+
+  ranking_button.addEventListener("click",function(evt){
+      location.href = "/board/rank";
+  });
+</script>
+<script th:inline="javascript">
+  var correct_ratio = document.querySelector(".correct_ratio");
+
+  total_problem = [[ ${ session.problemCount } ]];
+  correct_problem = [[ ${ correctIndex } ]];
+
+  if (correct_problem == 0){
+    correct_ratio.innerHTML = "0%";
+  }
+  else{
+    ratio = Math.round((correct_problem / total_problem * 100));
+    correct_ratio.innerHTML = ratio+"%";
+  }
+
+  correct_question = Object.values([[ ${correctQuizItem } ]]);
+  wrong_question =  Object.values([[ ${wrongQuizItem } ]]);
+
+  var correct_question_text = document.querySelectorAll("#correct_problem_text");
+  var wrong_question_text = document.querySelectorAll("#wrong_problem_text");
+
+  if (correct_question.length != 0){
+    for(var i=0;i<correct_question.length;i++){
+        correct_question_text[i].innerHTML = correct_question[i].question;
+    }
+  };
+  if (wrong_question.length != 0){
+    for(var i=0;i<correct_question.length;i++){
+        wrong_question_text[i].innerHTML = wrong_question[i].question;
+    }
+  };
+
+
+</script>
+
+</html>

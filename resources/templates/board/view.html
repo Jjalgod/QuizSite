@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>View</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+          integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/css/view.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,100&family=Ubuntu&display=swap"
+          rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"
+            integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s"
+            crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/def66b134a.js" crossorigin="anonymous">
+    </script>
+    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet'
+          type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+          rel='stylesheet' type='text/css'>
+</head>
+<body>
+<header id="header">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">KoSK</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/main">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/board/list">Bulletin Board</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Quiz
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/quizMenu">Quiz Menu</a>
+                        <a class="dropdown-item" href="/board/rank">Ranking</a>
+                        <div class="dropdown-divider"></div>
+                    </div>
+                </li>
+            </ul>
+            <th:block th:if="${session.memberVO.name != null }">
+                <a href="/member/userPage" style="text-decoration:none;"><span class="profile_name"
+                                                                               th:text="${session.memberVO.name}"
+                                                                               style="color:white"></span><span
+                        style="color:white">님</span></a>
+            </th:block>
+        </div>
+    </nav>
+</header>
+<section id="section">
+    <h1 class="section_header"><i class="fas fa-solid fa-comment fa-flip-horizontal" style="margin-right:10px;"></i>Bulletin
+        Board </h1>
+    <form th:action="@{/board/deleteInView(id=${id})}" method="post">
+        <article class="container" th:object="${boardVO}" style="padding:0 15%;">
+            <h2 class="visually-hidden">게시물 내용</h2>
+            <header class="alert alert-success" role="alert">
+                <h4 style="font-weight:bold;"><span class="alert-heading" th:text="*{title}"></span></h4>
+                <hr>
+                <p class="mb-0 text-end information">
+                    <span class="ms-3" th:text="@{|작성자 : *{regId}|}"></span>
+                    <span class="ms-3" th:text="@{|작성일 : *{#temporals.format(regDate, 'yyyy-MM-dd')}|}"></span>
+                    <span class="ms-3" th:text="@{|조회수 : *{count}|}"></span>
+                </p>
+            </header>
+            <section>
+                <h4 class="text_header"><i class="fas fa-solid fa-pen"></i> Text </h4>
+                <p class="h6 mb-5" th:utext="*{content}"></p>
+                <th:block th:if="${boardVO.uploadName != null}">
+                    <h4 class="image_header"><i class="fas fa-solid fa-image"></i> Image </h4>
+                    <div class="image_container">
+                        <img src="" class="uploadImage" id="uploadImage"/>
+                    </div>
+                </th:block>
+            </section>
+
+            <hr>
+            <div class="d-flex justify-content-between mb-3">
+
+                <th:block th:if="${session.memberVO.id == boardVO.regId}">
+                    <div>
+                        <a th:href="@{/board/modify(id=*{id})}" class="btn btn-outline-primary"> Edit </a>
+                        <button type="submit" class="btn btn-outline-danger"> Delete</button>
+                    </div>
+                </th:block>
+                <a th:href="@{/board/list}" class="btn btn-outline-dark"> All Post </a>
+            </div>
+        </article>
+    </form>
+
+    <ul>
+        <li th:each="comment : ${comments}">
+            <p class="mb-0">
+                <span class="ms-3" th:text="@{|작성자 : *{comment.regId}|}"></span>
+                <span class="ms-3" th:text="@{|작성일 : *{#temporals.format(comment.regDate, 'yyyy-MM-dd')}|}"></span>
+                <span class="ms-3" th:text="@{|댓글 : *{comment.comment}|}"></span>
+            </p>
+        </li>
+    </ul>
+
+    <form action="/board/comment" method="post">
+        <div>
+            <input type="hidden" name="boardId" th:value="*{boardVO.id}">
+            <textarea id="content" name="content" placeholder="댓글 입력"></textarea>
+            <button type="submit" class="btn btn-primary">게시</button>
+        </div>
+    </form>
+</section>
+<footer id="footer">
+    <div class="gototop">
+        <a href="#" class="lnk_top">
+            <span>TOP</span>
+        </a>
+    </div>
+    <div class="name1">OhKyuChan | okc0202@naver.com</div>
+    <div class="name2">KimSeungRyong | douglas@naver.com</div>
+    <div class="copyright">@ Quiz Program.</div>
+</footer>
+</body>
+<script th:inline="javascript">
+    var imageFlag = [[  ${boardVO.uploadName} ]];
+    var boardId = [[ ${boardVO.id }]];
+
+    if (imageFlag != null){
+            $.ajax({
+                  type:"GET",
+                  url:"/api/board/imageURL",
+                  data:{
+                      id : boardId
+                  },
+                  contentType : "application/json",
+                  cache: false,
+                  xhrFields: {
+                      responseType: "blob",
+                  },
+                  success : function(data){
+                      var blob = new Blob([data], { type: "image/png" });
+                      document.getElementById('uploadImage').src = window.URL.createObjectURL(blob);
+                  },
+                  error : function(request,error){
+                      console.log("error");
+                      alert(request.status+"Error"+error)
+                  }
+            });
+    }
+
+
+</script>
+</html>

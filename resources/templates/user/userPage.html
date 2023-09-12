@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>UserPage</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/css/UserPage.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,100&family=Ubuntu&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/def66b134a.js" crossorigin="anonymous">
+    </script>
+</head>
+<body>
+<header id="header">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="z-index:2;">
+        <a class="navbar-brand" href="#">KoSK</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/main">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/board/list">Bulletin Board</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Quiz
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/quizMenu">Quiz Menu</a>
+                        <a class="dropdown-item" href="/board/rank">Ranking</a>
+                        <div class="dropdown-divider"></div>
+                    </div>
+                </li>
+            </ul>
+            <th:block th:if="${session.memberVO.name != null }">
+                <a href="/member/userPage"><span class="profile_name" th:text="${session.memberVO.name}" style="color:white"></span><span style="color:white">님</span></a>
+            </th:block>
+        </div>
+    </nav>
+</header>
+
+<section id="section">
+    <div class="row">
+        <div class="col-lg-6" style="padding:0;">
+            <div class="section_header_container">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="section_header"> Profile </h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="profile_image_container">
+                            <img src="/images/user.png" alt="profile_image" class="profile_image"/>
+                        </div>
+                        <p class="name"> <span th:text="${session.memberVO.name}"></span></p>
+                        <p class="description"> <span th:text="${session.memberVO.description != null ? session.memberVO.description : 'Please input your introduction!'}"></span> </p>
+                        <p class="score"><i class="fas fa-solid fa-layer-group" style="margin-right:5px;"></i> High Score : <span th:text="${session.memberVO.score}"></span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6" style="padding:0 3%;">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="information_header"> Information </h3>
+                </div>
+                <div class="card-body">
+                    <div class="information_section">
+                        <p class="information_name"> <i class="fas fa-regular fa-user" style="margin-right:5px;"></i> Name : <span th:text="${session.memberVO.name}"></span>  </p>
+                        <p class="information_email"><i class="fas fa-solid fa-envelope" style="margin-right:5px;"></i> Email : <span th:text="${session.memberVO.email}"></span> </p>
+                        <p class="information_id"><i class="fas fa-solid fa-id-card" style="margin-right:5px;"></i> ID : <span th:text="${session.memberVO.id}"></span> </p>
+                        <p class="information_highScore"><i class="fas fa-solid fa-layer-group" style="margin-right:5px;"></i> High Score : <span th:text="${session.memberVO.score}"></span> </p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" style="margin-top:20px;">
+                <div class="card-header">
+                    <h3 class="information_edit"> Edit </h3>
+                </div>
+                <div class="card-body">
+                    <div class="information_edit_section">
+                        <ul class="edit_list">
+                            <li class="edit_person">
+                                <i class="fas fa-regular fa-user"></i>
+                                <p class="edit_text"> Person </p>
+                            </li>
+                            <li class="edit_Id">
+                                <i class="fas fa-solid fa-id-card"></i>
+                                <p class="edit_text"> ID </p>
+                            </li>
+                            <li class="edit_pass">
+                                <i class="fas fa-solid fa-lock"></i>
+                                <p class="edit_text"> Password </p>
+                            </li>
+                            <li class="board">
+                                <i class="fas fa-solid fa-pen"></i>
+                                <p class="edit_text"> Board </p>
+                            </li>
+                            <li class="exit_member">
+                                <i class="fas fa-solid fa-trash"></i>
+                                <p class="edit_text"> Exit </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<footer id="footer">
+    <div class="gototop">
+        <a href="#" class="lnk_top">
+            <span>TOP</span>
+        </a>
+    </div>
+    <div class="name1">OhKyuChan | okc0202@naver.com</div>
+    <div class="name2">KimSeungRyong | douglas@naver.com</div>
+    <div class="copyright">@ Quiz Program.</div>
+</footer>
+
+<div class="exit_wrapper" style="display:none;">
+    <div class="dimm_dark" style="display:block"></div>
+    <div class="exit pass">
+        <h1 class="pop_tit">
+            <span class="pop_title" data-id="0">Membership Withdrawal</span>
+            <small class="sm">Do you really want to withdraw from the membership?</small>
+        </h1>
+        <div class="exit_alert" style="text-align:left;">
+            <p>When you withdraw, all personal information and scores will be deleted.</p>
+        </div>
+        <div class="pop_bottom_btnarea">
+            <div class="btn_gray">
+                <a class="btn_bottom">No</a>
+            </div>
+            <div class="btn_green">
+                <a class="btn_bottom" href="/api/member/delete"> Yes </a>
+            </div>
+        </div>
+        <a class="popup_btn_close">
+            <i class="fab fa-solid fa-xmark"></i>
+        </a>
+    </div>
+</div>
+</body>
+
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+    var edit_person = document.querySelector(".edit_person");
+    var edit_id = document.querySelector(".edit_Id");
+    var edit_pass = document.querySelector(".edit_pass");
+    var edit_board = document.querySelector(".board");
+
+    edit_person.addEventListener("click",function(evt){
+        location.href="/member/editPerson";
+    });
+    edit_id.addEventListener("click",function(evt){
+        location.href="/member/editId";
+    });
+    edit_pass.addEventListener("click",function(evt){
+        location.href="/member/editPass";
+    });
+    edit_board.addEventListener("click",function(evt){
+        location.href="/board/myPost";
+    });
+
+
+</script>
+<script>
+    var exit = document.querySelector(".exit_member");
+
+    exit.addEventListener("click",function(evt){
+        var ui = document.querySelector(".exit_wrapper");
+        ui.style.display = "block";
+    });
+</script>
+<script>
+      var no_button = document.querySelector(".btn_gray")
+      var yes_button = document.querySelector(".btn_green")
+
+      no_button.addEventListener("click",function(evt){
+          var ui = document.querySelector(".exit_wrapper");
+          ui.style.display = "none";
+      });
+</script>
+</html>

@@ -1,0 +1,98 @@
+.section_header{
+    text-align:center;
+    padding:3% 0;
+    font-weight: 800;
+    font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+}
+.total_list{
+    float:right;
+    font-weight:bold;
+}
+.page{
+    font-weight:bold;
+    float:right;
+    margin-right:20px;
+}
+.text_number{
+    text-align:center;
+}
+.text_title{
+    text-decoration:none;
+}
+.move_container{
+    text-align:center;
+    margin-bottom:30px;
+}
+.number{
+    margin:0 5px;
+    text-decoration:none;
+    color:gray;
+    font-weight:bold;
+    cursor:pointer;
+}
+#newPostButton{
+    margin-left:850px;
+}
+.no_post_section{
+    clear:both;
+    margin-bottom:3%;
+}
+.no_post_section_header, .no_post_section_text, .card-header{
+    font-weight:bold;
+    text-align:center;
+}
+.no_post_section_header{
+    color:red;
+}
+.go_post_text, .quiz_text{
+    font-weight:bold;
+}
+.no_post_section_text{
+    margin-bottom:50px;
+}
+.card-section{
+    padding:0 15%;
+}
+.gototop
+{
+    z-index:1200;
+    position:relative;
+    background-color:#e9ecef;
+    text-align:center;
+    margin-top:10px;
+}
+.lnk_top
+{
+    padding:18px 0px 19.5px;
+    font-size:15px;
+    color:#000;
+}
+#footer
+{
+    margin-top:40px;
+    z-index:1200;
+    position:relative;
+    background-color:#e9ecef;
+    word-wrap:break-word;
+    text-align:center;
+    clear:both;
+    margin:0 auto;
+}
+.name1
+{
+    margin-top:10px;
+    font-size:15px;
+    color:#999;
+}
+.name2
+{
+    font-size:15px;
+    color:#999;
+}
+.copyright
+{
+    padding-right:10px;
+    padding-bottom:15px;
+    font-size:13px;
+    color:#999;
+}

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Select</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/css/quizMenu.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,100&family=Ubuntu&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/def66b134a.js" crossorigin="anonymous">
+    </script>
+</head>
+<body style="overflow-x: hidden">
+<header id="header">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">KoSK</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/main">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/board/list">Bulletin Board</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Quiz
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/quizMenu">Quiz Menu</a>
+                        <a class="dropdown-item" href="/board/rank">Ranking</a>
+                        <div class="dropdown-divider"></div>
+                    </div>
+                </li>
+            </ul>
+            <th:block th:if="${session.memberVO.name != null }">
+                <a href="/member/userPage"><span class="profile_name" th:text="${session.memberVO.name}" style="color:white"></span><span style="color:white">님</span></a>
+            </th:block>
+        </div>
+    </nav>
+</header>
+
+<div class="section">
+
+    <div class="section_text">
+        <div class="row">
+            <div class="col-lg-6">
+                <h1 class="section header"> Thank you for coming to the quiz program! </h1>
+                <p class="section text">There are some things you have to <br> choose before you start the quiz.</p>
+                <ul class="section_list">
+                    <li class="section_icon"><i class="fas fa-solid fa-pen" style="margin-right:10px;"></i>Difficulty</li>
+                    <li class="section_icon"><i class="fas fa-solid fa-pen" style="margin-right:10px;"></i>Problem Type</li>
+                    <li class="section_icon"><i class="fas fa-solid fa-pen" style="margin-right:10px;"></i>Problem Count</li>
+                 </ul>
+            </div>
+            <div class="col-lg-6">
+                <img src="images/note.png" alt="background_img" class="note_img"/>
+            </div>
+        </div>
+    </div>
+    <div class="row row_section">
+        <div class="difficulty_section col-lg-4 col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Kind of Difficulty</h3>
+                </div>
+                <div class="card-body">
+                    <h2><i class="fas fa-solid fa-file" style="margin-right:10px;"></i>Explanation</h2>
+                    <p>Easy</p> <span>Even children can solve it!</span>
+                    <p>Medium</p>  <span>It can be pretty tough..</span>
+                    <p>Hard</p> <span>It can really hurt your head!</span>
+                    <p>Random</p> <span> Randomly select from 3 difficulty levels.</span>
+                </div>
+            </div>
+        </div>
+        <div class="type_section col-lg-4 col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Kind of Problem</h3>
+                </div>
+                <div class="card-body">
+                    <h2><i class="fas fa-solid fa-file" style="margin-right:10px;"></i>Explanation</h2>
+                    <p>True / False</p> <span>Select one of the two questions</span>
+                    <p style="margin-top:40px;">Multi-selection type</p> <span >Write your answer in descriptive form</span>
+                    <p style="margin-top:40px;">Random</p> <span>One of the two types is randomly selected.</span>
+                </div>
+            </div>
+        </div>
+        <div class="form_section col-lg-4 col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Select</h3>
+                </div>
+                <div class="card-body">
+                    <form th:action="@{/quizStart}" method="post">
+                        <label for="difficulty" class="difficulty">Choose Difficulty</label>
+                        <br>
+                        <select name="difficulty" id="difficulty">
+                            <option value="easy">easy</option>
+                            <option value="medium">medium</option>
+                            <option value="hard">hard</option>
+                            <option value="random">Random</option>
+                        </select>
+                        <br>
+                        <label for="problemType" class="problemType">Choose Problem Type</label>
+                        <br>
+                        <select name="problemType" id="problemType">
+                            <option value="boolean">True / False</option>
+                            <option value="multiple">Multi-selection type</option>
+                            <option value="random">Random</option>
+                        </select>
+                        <label for="countProblem" class="countProblem">Enter the number of problems to solve </label>
+                        <input type="text" name="problemCount" id="countProblem"/>
+                        <br>
+                        <button type="submit" class="btn btn-outline-success btn-block submitButton">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer id="footer">
+    <div class="gototop">
+        <a href="#" class="lnk_top">
+            <span>TOP</span>
+        </a>
+    </div>
+    <div class="name1">OhKyuChan | okc0202@naver.com</div>
+    <div class="name2">KimSeungRyong | douglas@naver.com</div>
+    <div class="copyright">@ Quiz Program.</div>
+</footer>
+</body>
+</html>
