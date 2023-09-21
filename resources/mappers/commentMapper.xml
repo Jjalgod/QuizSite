@@ -23,6 +23,8 @@
     <!--댓글 보기-->
     <select id="selectCommentVOById" resultType="CommentVO">
         SELECT
+        id,
+        board_id,
         comment,
         reg_id,
         reg_date
@@ -30,4 +32,18 @@
         WHERE board_id = #{boardId}
         ORDER BY id DESC
     </select>
+
+    <!--댓글 삭제-->
+    <delete id="deleteCommentById" parameterType="int">
+        DELETE FROM comment
+        WHERE id = #{id}
+    </delete>
+
+    <!--댓글 수정-->
+    <update id="updateCommentVO" parameterType="CommentVO">
+        UPDATE comment SET
+        comment = #{comment},
+        mod_date = NOW()
+        WHERE id = #{id}
+    </update>
 </mapper>
